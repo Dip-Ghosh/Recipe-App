@@ -1,11 +1,20 @@
 
-const productCategory = document.getElementById('product-category')
+const productCategory = document.getElementById('product-category');
+const categoryMeals   = document.getElementById('category-meals')
 
-//fetch categories
-const category = async () => {
-    const response = (await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list'));
+
+//fetch categories only name
+const categoryOnlyName = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
     const categories = await response.json();
     addCategory(categories.meals);
+}
+
+//fetch category with name and image
+const categoryNameWithImage = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+    const categories = await response.json();
+    addCategoriesToDiv(categories.categories);
 }
 
 //add categories to navbar
@@ -26,7 +35,53 @@ const addCategory = (categories) => {
     })
 }
 
-//fetch Products
+//add category to the body
+const addCategoriesToDiv = (categories) => {
 
-const products = async ()
-document.addEventListener("DOMContentLoaded", category);
+    categories.forEach((category, index) => {
+
+        console.log(category);
+        const meal = document.createElement("div");
+        meal.classList.add("meal");
+
+        meal.innerHTML = `
+            <div class="row col">
+                <div class="card" style="width: 18rem;">
+                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
+                         <div class="card-body">
+                              <h5 class="card-title">${category.strCategory}</h5>
+                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
+                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                </div>
+            </div>
+            
+             <div class="row col">
+                <div class="card" style="width: 18rem;">
+                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
+                         <div class="card-body">
+                              <h5 class="card-title">${category.strCategory}</h5>
+                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
+                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                </div>
+            </div>
+            
+             <div class="row col">
+                <div class="card" style="width: 18rem;">
+                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
+                         <div class="card-body">
+                              <h5 class="card-title">${category.strCategory}</h5>
+                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
+                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                </div>
+            </div>
+        `
+        categoryMeals.appendChild(meal);
+    })
+}
+
+categoryNameWithImage();
+categoryOnlyName();
+// document.addEventListener("DOMContentLoaded", category);
