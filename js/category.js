@@ -1,4 +1,3 @@
-const categoryMeals = document.getElementById('category-meals')
 
 const categoryNameWithImage = async () => {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
@@ -7,6 +6,11 @@ const categoryNameWithImage = async () => {
 }
 
 const addCategoriesToDiv = (categories) => {
+    const categoryMeals = document.getElementById('category-meal')
+
+    const mealEle = document.getElementById('meals');
+    mealEle.style.display='none';
+    categoryMeals.style.display='block';
 
     categories.forEach((category, index) => {
         const meal = document.createElement("div");
