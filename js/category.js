@@ -30,4 +30,7 @@ const addCategoriesToDiv = (categories) => {
     })
 }
 
-// categoryNameWithImage();
+categary.addEventListener('click', (e) => {
+    e.preventDefault();
+    categoryNameWithImage();
+})
