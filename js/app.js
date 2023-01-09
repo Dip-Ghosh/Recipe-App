@@ -42,41 +42,21 @@ const addCategoriesToDiv = (categories) => {
 
         console.log(category);
         const meal = document.createElement("div");
-        meal.classList.add("meal");
+        meal.classList.add("row");
 
         meal.innerHTML = `
-            <div class="row col">
-                <div class="card" style="width: 18rem;">
-                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
-                         <div class="card-body">
-                              <h5 class="card-title">${category.strCategory}</h5>
-                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
-                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
-                         </div>
-                </div>
-            </div>
-            
-             <div class="row col">
-                <div class="card" style="width: 18rem;">
-                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
-                         <div class="card-body">
-                              <h5 class="card-title">${category.strCategory}</h5>
-                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
-                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
-                         </div>
-                </div>
-            </div>
-            
-             <div class="row col">
-                <div class="card" style="width: 18rem;">
-                       <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
-                         <div class="card-body">
-                              <h5 class="card-title">${category.strCategory}</h5>
-                                 <p class="card-text content-jusity">${ category.strCategoryDescription}</p>
-                                 <a href="${category.idCategory}" class="btn btn-primary">Go somewhere</a>
-                         </div>
-                </div>
-            </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3">
+                                <img src="${category.strCategoryThumb}" class="card-img-top" alt="${category.strCategoryThumb}">
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">${category.strCategory}</h1>
+                               <p class="card-text content-jusity d-flex align-items-stretch">${ category.strCategoryDescription}</p>
+                                <button type="button" class="w-100 btn btn-lg btn-primary">See More</button>
+                            </div>
+                        </div>
+                    </div>  
         `
         categoryMeals.appendChild(meal);
     })
