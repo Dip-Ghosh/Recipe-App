@@ -1,22 +1,23 @@
 
+const categoryMeals         = document.getElementById('category-meal');
+const mealElement           = document.getElementById('meals')
+
 const categoryNameWithImage = async () => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+
+    const response   = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
     const categories = await response.json();
+
     addCategoriesToDiv(categories.categories);
 }
 
 const addCategoriesToDiv = (categories) => {
-    const categoryMeals = document.getElementById('category-meal')
-
-    const mealEle = document.getElementById('meals');
-    mealEle.style.display='none';
-    categoryMeals.style.display='block';
 
     categories.forEach((category, index) => {
-        const meal = document.createElement("div");
-        meal.classList.add("row");
 
-        meal.innerHTML = `
+        const meal      = document.createElement("div");
+
+        meal.classList.add("row");
+        meal.innerHTML  = `
                     <div class="col d-flex align-items-stretch">
                         <div class="card mb-4 rounded-3 shadow-sm ">
                             <div class="card-header py-3">
@@ -28,13 +29,18 @@ const addCategoriesToDiv = (categories) => {
                                 <button type="button" onclick="details(${category.idCategory})" class="w-100 btn btn-lg btn-primary" id="${category.idCategory}">See More</button>
                             </div>
                         </div>
-                    </div>  
-        `
+                    </div> `;
+
         categoryMeals.appendChild(meal);
     })
 }
 
 categary.addEventListener('click', (e) => {
+
     e.preventDefault();
+
+    mealElement.hidden   = true;
+    categoryMeals.hidden = false;
+
     categoryNameWithImage();
 })
