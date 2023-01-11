@@ -1,7 +1,5 @@
 const mealBtn       = document.getElementById('random-meals');
 const mealEle       = document.getElementById('meals');
-// const categoryMeals = document.getElementById('category-meal');
-
 
 const randomMeals = async () => {
 
@@ -14,7 +12,7 @@ const randomMeals = async () => {
 const addMealToDiv = (meal) => {
 
     const mealElement = document.createElement("div");
-
+    mealEle.innerHTML = '';
     mealElement.classList.add("row");
 
     mealElement.innerHTML = `
@@ -33,8 +31,6 @@ const addMealToDiv = (meal) => {
 
     mealEle.appendChild(mealElement);
 }
-
-// setTimeout(randomMeals(),10000);
 
 mealBtn.addEventListener('click', (e) => {
     e.preventDefault();
