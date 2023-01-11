@@ -2,16 +2,28 @@ const searchMeals = document.getElementById('search-term')
 const searchBtn = document.getElementById('search')
 
 
-const searchByFullName = async (name) => {
+const searchBySingleAlphabet = async (key) => {
 
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + name);
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + key);
     let meals = await response.json();
-    searchValue(meals.meals);
+    AddSearchValueToValue(meals.meals);
 }
 
+const searchById = async (id) => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id);
+    const meals    = await response.json();
+    AddSearchValueToValue(meals.meals);
+}
 
+const searchByName = async (Name) => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + Name);
+    const meals = await response.json();
+    console.log(meals);
+    AddSearchValueToValue(meals.meals);
 
-const searchValue = (meals) => {
+}
+
+const AddSearchValueToValue = (meals) => {
 
     meals.forEach((meal) => {
 
@@ -36,36 +48,31 @@ const searchValue = (meals) => {
     })
 }
 
-// const singleCategory = async () => {
-//
-//     const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast');
-//     const categories = await response.json();
-//     addCategory(categories.meals);
-// }
+const checkIsNumber = (str) => {
 
+    return /^\d+$/.test(str);
 
-// const details = async (id) => {
-//
-//     console.log(id);
-//     const response = await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id);
-//     const categories = await response.json();
-//     console.log(categories);
-// }
+}
 
 
 searchBtn.addEventListener('click', (e) => {
 
     e.preventDefault();
-    let searchKey = searchMeals.value;
 
-    if (Number.isInteger(searchKey)) {
+    let searchKey = searchMeals.value.trim();
 
+    if (checkIsNumber(searchKey)) {
+        searchById(searchKey);
+    } else if(searchKey.length  == 1) {
+        searchBySingleAlphabet(searchKey);
     }
-    searchByFullName();
+    else{
+        searchByName(searchKey)
+    }
+
 
 })
 
-// categoryOnlyName();
 
 
 // document.addEventListener("DOMContentLoaded", category);

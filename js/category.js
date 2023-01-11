@@ -4,7 +4,7 @@ const mealElement           = document.getElementById('meals')
 
 const categoryNameWithImage = async () => {
 
-    const response   = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+    const response   = await fetch('');
     const categories = await response.json();
 
     addCategoriesToDiv(categories.categories);

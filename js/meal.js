@@ -30,17 +30,16 @@ const addMealToDiv = (meal) => {
                         </div>
                     </div>  
         `
-    console.log(meal);
 
     mealEle.appendChild(mealElement);
 }
+
+// setTimeout(randomMeals(),10000);
 
 mealBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     categoryMeals.hidden = true;
     mealEle.hidden       = false;
-
     randomMeals();
-
 })
