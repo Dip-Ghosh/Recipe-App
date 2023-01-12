@@ -1,21 +1,25 @@
+
+import { fetchMealList } from './api';
+
+const mealList = document.getElementById('meals-list');
+
+const categoryElement = document.getElementById('category-meal');
+const mealElement = document.getElementById('meals')
 const searchMeals = document.getElementById('search-term');
-const searchBtn   = document.getElementById('search');
-const mealList   = document.getElementById('meals-list');
+const searchBtn = document.getElementById('search');
+const mealBtn = document.getElementById('random-meals');
+const mealEle = document.getElementById('meals');
 
-const fetchMealList = async () => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast');
-    let meals = await response.json();
-    loadMeals(meals.meals);
-}
 
+//load data when the page open
 const loadMeals = (meals) => {
 
     meals.forEach((meal) => {
 
-        const mealElement  = document.createElement("div");
+        const mealElement = document.createElement("div");
 
         mealElement.classList.add("row");
-        mealElement.innerHTML  = `
+        mealElement.innerHTML = `
                     <div class="col d-flex align-items-stretch">
                         <div class="card mb-4 rounded-3 shadow-sm ">
                             <div class="card-header py-3">
@@ -28,34 +32,16 @@ const loadMeals = (meals) => {
     })
 }
 
-
-const searchBySingleAlphabet = async (key) => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + key);
-    let meals = await response.json();
-    filterMeals(meals.meals);
-}
-
-const searchById = async (id) => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id);
-    const meals    = await response.json();
-    filterMeals(meals.meals);
-}
-
-const searchByName = async (Name) => {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + Name);
-    const meals = await response.json();
-    filterMeals(meals.meals);
-}
-
+//seach meals
 const filterMeals = (meals) => {
 
     categoryMeals.innerHTML = '';
     meals.forEach((meal) => {
 
-        const mealElement  = document.createElement("div");
+        const mealElement = document.createElement("div");
 
         mealElement.classList.add("row");
-        mealElement.innerHTML  = `
+        mealElement.innerHTML = `
                     <div class="col d-flex align-items-stretch">
                         <div class="card mb-4 rounded-3 shadow-sm ">
                             <div class="card-header py-3">
@@ -72,25 +58,19 @@ const filterMeals = (meals) => {
     })
 }
 
-const checkIsNumber = (str) => {
-
-    return /^\d+$/.test(str);
-
-}
-
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let searchKey = searchMeals.value.trim();
 
     if (checkIsNumber(searchKey)) {
         searchById(searchKey);
-    }
-    else if(searchKey.length  == 1) {
+    } else if (searchKey.length == 1) {
         searchBySingleAlphabet(searchKey);
-    }
-    else{
+    } else {
         searchByName(searchKey)
     }
 })
 
 document.addEventListener("DOMContentLoaded", fetchMealList);
+
+export { categoryElement, mealElement, searchMeals, searchBtn, mealList, mealBtn, mealEle };

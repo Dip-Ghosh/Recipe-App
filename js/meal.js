@@ -1,13 +1,6 @@
-const mealBtn       = document.getElementById('random-meals');
-const mealEle       = document.getElementById('meals');
 
-const randomMeals = async () => {
+export { categoryElement, mealElement, searchMeals, searchBtn, mealList, mealBtn, mealEle  } from './app.js'
 
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
-    const meals   = await response.json();
-
-    addMealToDiv(meals.meals[0]);
-}
 
 const addMealToDiv = (meal) => {
 
@@ -29,10 +22,11 @@ const addMealToDiv = (meal) => {
     mealEle.appendChild(mealElement);
 }
 
+//load random meals
 mealBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    categoryMeals.hidden = true;
-    mealEle.hidden       = false;
+    categories.hidden = true;
+    mealElement.hidden       = false;
     randomMeals();
 })
