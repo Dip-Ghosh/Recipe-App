@@ -21,11 +21,6 @@ const loadMeals = (meals) => {
                             <div class="card-header py-3">
                                 <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMealThumb}">
                             </div>
-                            <div class="card-body">
-                                <h1 class="card-title pricing-card-title">${meal.strMeal}</h1>
-                          
-                                <button type="button" onclick="details(${meal.idMeal})" class="w-100 btn btn-lg btn-primary" id="${meal.idMeal}">See More</button>
-                            </div>
                         </div>
                     </div> `;
 

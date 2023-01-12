@@ -14,9 +14,8 @@ const addMealToDiv = (meal) => {
     const mealElement = document.createElement("div");
     mealEle.innerHTML = '';
     mealElement.classList.add("row");
-
-    mealElement.innerHTML = `
-                   <div class="col">
+    mealElement.innerHTML =
+                    ` <div class="col">
                         <div class="card mb-12 rounded-3 shadow-sm ">
                             <div class="card-header py-3">
                                 <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMealThumb}">
@@ -26,9 +25,7 @@ const addMealToDiv = (meal) => {
                                 <button type="button" onclick="details(${meal.idMeal})" class="w-100 btn btn-lg btn-primary" id="${meal.idMeal}">See More</button>
                             </div>
                         </div>
-                    </div>  
-        `
-
+                    </div>`;
     mealEle.appendChild(mealElement);
 }
 
