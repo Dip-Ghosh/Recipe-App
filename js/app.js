@@ -1,20 +1,19 @@
 
-import { fetchMealList } from './api';
 
-const mealList = document.getElementById('meals-list');
 
-const categoryElement = document.getElementById('category-meal');
-const mealElement = document.getElementById('meals')
-const searchMeals = document.getElementById('search-term');
-const searchBtn = document.getElementById('search');
-const mealBtn = document.getElementById('random-meals');
-const mealEle = document.getElementById('meals');
+//fetch meal list
+import {meals} from "./main";
+
+const fetchAllMeals = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast');
+    let mealList = await response.json();
+    loadMeals(mealList.meals);
+}
 
 
 //load data when the page open
-const loadMeals = (meals) => {
-
-    meals.forEach((meal) => {
+const loadMeals = (mealList) => {
+    mealList.forEach((mealItem) => {
 
         const mealElement = document.createElement("div");
 
@@ -23,16 +22,28 @@ const loadMeals = (meals) => {
                     <div class="col d-flex align-items-stretch">
                         <div class="card mb-4 rounded-3 shadow-sm ">
                             <div class="card-header py-3">
-                                <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMealThumb}">
+                                <img src="${mealItem.strMealThumb}" class="card-img-top" alt="${mealItem.strMealThumb}">
                             </div>
                         </div>
                     </div> `;
 
-        mealList.appendChild(mealElement);
+        meals.appendChild(mealElement);
     })
 }
 
-//seach meals
+document.addEventListener("DOMContentLoaded", fetchAllMeals );
+
+
+
+
+
+
+
+
+
+
+
+
 const filterMeals = (meals) => {
 
     categoryMeals.innerHTML = '';
@@ -71,6 +82,7 @@ searchBtn.addEventListener('click', (e) => {
     }
 })
 
-document.addEventListener("DOMContentLoaded", fetchMealList);
+export { loadMeals };
 
-export { categoryElement, mealElement, searchMeals, searchBtn, mealList, mealBtn, mealEle };
+
+
