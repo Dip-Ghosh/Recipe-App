@@ -1,11 +1,12 @@
-import { mealDiv } from "./main.js"
+import { mealDiv } from "./main.js";
+
 const fetchAllMeals = async () => {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast');
     let mealList = await response.json();
     loadMeals(mealList.meals);
 }
 
-const loadMeals = (mealList) => {
+const loadMeals     = (mealList) => {
     mealDiv.innerHTML = '';
     mealList.forEach((mealItem) => {
         const mealElement = document.createElement("div");
@@ -24,7 +25,7 @@ const loadMeals = (mealList) => {
     })
 }
 
-document.addEventListener("DOMContentLoaded", fetchAllMeals );
+document.addEventListener("DOMContentLoaded",  fetchAllMeals);
 
 export { fetchAllMeals }
 

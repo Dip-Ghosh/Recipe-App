@@ -56,6 +56,7 @@ const filterMeals = (meals) => {
 
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
+
     let searchKey = searchInputElement.value.trim();
 
     if (searchKey) {

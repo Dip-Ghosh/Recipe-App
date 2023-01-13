@@ -1,3 +1,4 @@
+
 import { mealDiv } from "./main.js"
 
 const categoryElement = document.getElementById('category');
@@ -31,9 +32,6 @@ const addCategoriesToDiv = (categories) => {
     })
 }
 
-categoryElement.addEventListener('click', (e) => {
-    e.preventDefault();
-    categoryNameWithImage();
-})
+categoryElement.addEventListener('click', categoryNameWithImage)
 
 export { categoryNameWithImage }
