@@ -15,12 +15,5 @@ const randomMeals   = async () => {
 
 //category list
 
-const categoryNameWithImage = async () => {
-
-    const response   = await fetch('');
-    const categories = await response.json();
-
-    addCategoriesToDiv(categories.categories);
-}
 
 

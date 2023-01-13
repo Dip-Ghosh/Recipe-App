@@ -58,12 +58,14 @@ searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     let searchKey = searchInputElement.value.trim();
 
-    if (checkIsNumber(searchKey)) {
-        searchById(searchKey);
-    } else if (searchKey.length == 1) {
-        searchBySingleAlphabet(searchKey);
-    } else {
-        searchByName(searchKey)
+    if (searchKey) {
+        if (checkIsNumber(searchKey)) {
+            searchById(searchKey);
+        } else if (searchKey.length == 1) {
+            searchBySingleAlphabet(searchKey);
+        } else {
+            searchByName(searchKey)
+        }
     }
 })
 

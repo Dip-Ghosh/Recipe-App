@@ -13,8 +13,7 @@ const addCategory = (categories) => {
         let item     = document.createElement('li');
         let elementA = document.createElement('a');
 
-        item.classList.add('nav-item');
-        elementA.classList.add('nav-link');
+        elementA.classList.add('dropdown-item');
         item.appendChild(elementA);
         elementA.innerHTML = category.strCategory;
         productCategory.appendChild(item);
