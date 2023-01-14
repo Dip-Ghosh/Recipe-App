@@ -3,7 +3,7 @@
 <img src="./img/recipe-app.png" width="400" alt="Quiz app Logo"></a></p>
 
 
-## About Countdown Timer
+## About Recipe App
 
 Simple Meal Deal app by using  free meal api
 
